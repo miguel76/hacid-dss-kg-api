@@ -167,23 +167,37 @@ def find_roles(entity_type: str, startswith: str|None = None, contains: str | No
         contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?classInstanceLabel)), LCASE('{c}'))." for c in (contains.split(',') or [])])
 
     query = f"""
-    BASE <https://w3id.org/hacid/data/cs/wf/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX top: <https://w3id.org/hacid/onto/top-level/>
-PREFIX method_role: <app-profile/roles/Method>
-PREFIX ops: <ops/>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+        PREFIX top: <https://w3id.org/hacid/onto/top-level/> 
 
-SELECT DISTINCT
-    ?classInstance ?classInstanceLabel
-WHERE {{
-  
-  
-       ?someClass top:hasExpectedType  ?range_class.
-        ?classInstance a ?range_class .
-        ?classInstance rdfs:label ?classInstanceLabel.
- 
-    }} limit 1000
-"""
+        SELECT 
+            ?classInstance ?classInstanceLabel
+        WHERE {{
+            <{entity_type}>
+                top:hasExpectedType/(
+                    (owl:unionOf|owl:intersectionOf)/rdf:rest*/rdf:first |
+                    owl:allValuesFrom
+                )* ?itemClass.
+            FILTER(?itemClass NOT IN (top:Interval)).
+            {{
+                ?classInstance a ?itemClass.
+            }} UNION {{
+                ?itemClass [
+                    a owl:Restriction;
+                    owl:onProperty ?p;
+                    owl:hasValue ?o
+                ].
+                ?classInstance ?p ?o.
+            }}.
+            ?classInstance rdfs:label ?classInstanceLabel
+            {startswith_filter}
+            {contains_filter}
+        }}
+        ORDER BY ?classInstanceLabel
+        LIMIT 1000
+    """
 
 #     query = f"""
 # BASE <https://w3id.org/hacid/data/cs/wf/>
