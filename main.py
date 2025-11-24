@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Query, Depends, HTTPException, status
+from fastapi import FastAPI, Query, Depends, HTTPException, status, Request
 from SPARQLWrapper import SPARQLWrapper, CSV, JSON
 from fastapi.middleware.cors import CORSMiddleware
 import json
+import logging
 
 from fastapi.security import OAuth2AuthorizationCodeBearer
 from jose import jwt, JWTError
@@ -27,6 +28,10 @@ app.add_middleware(
 )
 
 sparql = SPARQLWrapper("http://w3id.org/hacid/cs/sparql")
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 # Returns all classes in the knowledge graph
 @app.get("/knowledge-graph/classes")
@@ -158,7 +163,7 @@ def list_resources_for_role(
     output_var_name: str = "classInstance"
 ):
 
-    role_uri = "https://w3id.org/hacid/data/cs/wf/ops/FilterClimateProjectionsByVariable/roles/SelectedVariable" # for testing purposes
+    #role_uri = "https://w3id.org/hacid/data/cs/wf/ops/FilterClimateProjectionsByVariable/roles/SelectedVariable" # for testing purposes
 
     startswith_filter = ""
     contains_filter = ""
@@ -187,11 +192,11 @@ def list_resources_for_role(
             {{
                 ?{output_var_name} a ?itemClass.
             }} UNION {{
-                ?itemClass [
+                ?itemClass
                     a owl:Restriction;
                     owl:onProperty ?p;
                     owl:hasValue ?o
-                ].
+                .
                 ?{output_var_name} ?p ?o.
             }}.
             ?{output_var_name} rdfs:label ?{output_var_name}Label
@@ -201,6 +206,12 @@ def list_resources_for_role(
         ORDER BY ?{output_var_name}Label
         LIMIT 1000
     """
+    #logger.info(f"Query: {query}")
+    sparql.setQuery(query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    return results['results']['bindings']
 
 
 # Returns resources for a given role in the knowledge graph
