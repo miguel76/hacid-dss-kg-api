@@ -169,10 +169,10 @@ def list_resources_for_role(
     contains_filter = ""
 
     if(startswith!=None):
-        startswith_filter = f"FILTER(STRSTARTS(LCASE(?classInstanceLabel), LCASE('{startswith}')))." if startswith else ""
+        startswith_filter = f"FILTER(STRSTARTS(LCASE(?{output_var_name}Label), LCASE('{startswith}')))." if startswith else ""
 
     if(contains!=None):
-        contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?classInstanceLabel)), LCASE('{c}'))." for c in (contains.split(',') or [])])
+        contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?{output_var_name}Label)), LCASE('{c}'))." for c in (contains.split(',') or [])])
 
     query = f"""
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
