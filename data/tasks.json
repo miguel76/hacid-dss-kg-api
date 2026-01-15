@@ -270,21 +270,6 @@
             },
             {
                 "task_label": "Conduct manual selection of climate projections",
-                "task_description": "The task of manually selecting the climate projections",
-                "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections",
-                "children": [],
-                "parent_task_label": "Prepare climate information",
-                "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
-                "data": "single_entity",
-                "metadata": {
-                    "gui_label": "Select climate projections",
-                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections/associated-data",
-                    "multiple_selection": false
-                }
-            },
-            {
-                "task_label": "Conduct manual selection of climate projections",
                 "task_description": "The operation that selects the climate projections",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections",
                 "children": [],
