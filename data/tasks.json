@@ -1,125 +1,25 @@
 [
     {
-        "task_label": "Task - Optional Duration Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "duration_range",
-        "metadata": {
-            "gui_label": "Select temporal resolution",
-            "gui_start_label": "Minimum temporal resolution",
-            "gui_end_label": "Maximum temporal resolution",
-            "gui_single_label": "Temporal resolution",
-            "optional_single": true
-        }
-    },
-    {
-        "task_label": "Task - Duration Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "duration_range",
-        "metadata": {
-            "gui_label": "Select temporal resolution",
-            "gui_start_label": "Minimum temporal resolution",
-            "gui_end_label": "Maximum temporal resolution",
-            "gui_single_label": "Temporal resolution",
-            "optional_single": false
-        }
-    },
-    {
-        "task_label": "Task - Optional Number Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "number_range",
-        "metadata": {
-            "gui_label": "Select temporal resolution",
-            "gui_start_label": "Minimum temporal resolution",
-            "gui_end_label": "Maximum temporal resolution",
-            "gui_single_label": "Temporal resolution",
-            "optional_single": true
-        }
-    },
-    {
-        "task_label": "Task - Number Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "number_range",
-        "metadata": {
-            "gui_label": "Select temporal resolution",
-            "gui_start_label": "Minimum temporal resolution",
-            "gui_end_label": "Maximum temporal resolution",
-            "gui_single_label": "Temporal resolution",
-            "optional_single": false
-        }
-    },
-    {
-        "task_label": "Task - Optional Entity Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "entity_range",
-        "metadata": {
-            "gui_label": "Select global warming level",
-            "gui_start_label": "Minimum warming level",
-            "gui_end_label": "Maximum warming level",
-            "gui_single_label": "Warming level",
-            "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/methods",
-            "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview/associated-data",
-            "optional_single": true
-        }
-    },
-    {
-        "task_label": "Task - Entity Range",
-        "task_description": "The task of looking for additional information from existing literature.",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
-        "children": [],
-        "parent_task_label": "Search additional Information",
-        "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
-        "data": "entity_range",
-        "metadata": {
-            "gui_label": "Select global warming level",
-            "gui_start_label": "Minimum warming level",
-            "gui_end_label": "Maximum warming level",
-            "gui_single_label": "Warming level",
-            "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/methods",
-            "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview/associated-data",
-            "optional_single": false
-        }
-    },
-    {
-        "task_label": "Search additional Information",
-        "task_description": "The task of requesting external expertise such as an expert or literature review.",
+        "task_label": "Search additional information",
+        "task_description": "The operation that requests external expertise such as an expert or literature review.",
         "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
         "children": [
             {
                 "task_label": "Perform literature review",
-                "task_description": "The task of looking for additional information from existing literature.",
+                "task_description": "The operation that looks for additional information from existing literature.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PerformLiteratureReview",
                 "children": [],
-                "parent_task_label": "Search additional Information",
+                "parent_task_label": "Search additional information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
                 "data": "",
                 "metadata": {}
             },
             {
                 "task_label": "Search for external expertise",
-                "task_description": "The task of requesting external expertise from an expert.",
+                "task_description": "The operation that requests external expertise from an expert.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchForExternalExpertise",
                 "children": [],
-                "parent_task_label": "Search additional Information",
+                "parent_task_label": "Search additional information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
                 "data": "",
                 "metadata": {}
@@ -129,7 +29,7 @@
                 "task_description": "The task of describing the non-climatic information.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ProvideNonClimaticInformation",
                 "children": [],
-                "parent_task_label": "Search additional Information",
+                "parent_task_label": "Search additional information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SearchAdditionalInformation",
                 "data": "",
                 "metadata": {}
@@ -142,12 +42,12 @@
     },
     {
         "task_label": "Prepare climate information",
-        "task_description": "The task of preparing the climate information.",
+        "task_description": "The operation that prepares the climate information.",
         "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
         "children": [
             {
                 "task_label": "Identify indices and variables",
-                "task_description": "The task of identifying the climate indices (e.g., number of tropical nights per calendar year, standardised precipitation index) or variables (e.g.,  max temperature, monthly rainfall) if no suitable indicator is found relevant to the study or decision-making context.",
+                "task_description": "The operation that identifies the climate indices (e.g., number of tropical nights per calendar year, standardised precipitation index) or variables (e.g.,  max temperature, monthly rainfall) if no suitable indicator is found relevant to the study or decision-making context.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/IdentifyIndicesAndVariables",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -162,7 +62,7 @@
             },
             {
                 "task_label": "Choose baseline period",
-                "task_description": "The task of choosing a historical reference period (e.g., 1850–1900 as pre-industrial baseline, 1986–2005 in IPCC AR5, 1995–2014 in IPCC AR6) to serve as a baseline for comparing future climate projections or for global warming level extraction",
+                "task_description": "The operation that chooses a historical reference period (e.g., 1850–1900 as pre-industrial baseline, 1986–2005 in IPCC AR5, 1995–2014 in IPCC AR6) to serve as a baseline for comparing future climate projections or for global warming level extraction",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseBaselinePeriod",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -175,7 +75,7 @@
             },
             {
                 "task_label": "Choose future period",
-                "task_description": "The task of choosing the future time horizons of interest (e.g., specific period in the future like 2080–2100, 2030–2080) for climate information or risk or impact assessment.",
+                "task_description": "The operation that chooses the future time horizons of interest (e.g., specific period in the future like 2080–2100, 2030–2080) for climate information or risk or impact assessment.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseFuturePeriod",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -188,7 +88,7 @@
             },
             {
                 "task_label": "Choose global warming level",
-                "task_description": "The task of selecting specific global warming levels (e.g., +1.5°C, +2°C).",
+                "task_description": "The operation that selects specific global warming levels (e.g., +1.5°C, +2°C).",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseGlobalWarmingLevel",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -206,7 +106,7 @@
             },
             {
                 "task_label": "Choose global warming level extraction method",
-                "task_description": "The task of choosing a method to extract regional climate change data in relation to selected global warming levels above pre-industrial (default: 1850-1900).",
+                "task_description": "The operation that chooses a method to extract regional climate change data in relation to selected global warming levels above pre-industrial (default: 1850-1900).",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseGlobalWarmingLevelExtractionMethod",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -221,7 +121,7 @@
             },
             {
                 "task_label": "Define emission scenarios",
-                "task_description": "The task of defining appropriate representative concentration pathways (RCPs) or shared socioeconomic\npathways (SSPs) to explore a range of future climate outcomes.",
+                "task_description": "The operation that defines appropriate representative concentration pathways (RCPs) or shared socioeconomic\npathways (SSPs) to explore a range of future climate outcomes.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/DefineEmissionScenarios",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -235,8 +135,23 @@
                 }
             },
             {
+                "task_label": "Choose climate models",
+                "task_description": "The operation that selects the climate models",
+                "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseClimateModels",
+                "children": [],
+                "parent_task_label": "Prepare climate information",
+                "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
+                "data": "single_entity",
+                "metadata": {
+                    "gui_label": "Select climate model",
+                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
+                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ChooseClimateModels/associated-data",
+                    "multiple_selection": true
+                }
+            },
+            {
                 "task_label": "Define relevant spatial resolutions",
-                "task_description": "The task of selecting the required spatial resolution (e.g., 1 km, 60 km, 0.25°) range for the output climate data.",
+                "task_description": "The operation that selects the required spatial resolution (e.g., 1 km, 60 km, 0.25°) range for the output climate data.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/DefineRelevantSpatialResolutions",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -252,7 +167,7 @@
             },
             {
                 "task_label": "Define relevant temporal resolutions",
-                "task_description": "The task of selecting the required temporal resolution (e.g., daily, monthly, annual, seasonal) range for the output climate data.",
+                "task_description": "The operation that selects the required temporal resolution (e.g., daily, monthly, annual, seasonal) range for the output climate data.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/DefineRelevantTemporalResolutions",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -268,7 +183,7 @@
             },
             {
                 "task_label": "Define subannual selection",
-                "task_description": "The task of selecting a sub-annual period (e.g. month, season, period in year) of interest (e.g. boreal winter (DJFM), austral spring (SON), Januarys, Julys).",
+                "task_description": "The operation that selects a sub-annual period (e.g. month, season, period in year) of interest (e.g. boreal winter (DJFM), austral spring (SON), Januarys, Julys).",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/DefineSubannualSelection",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -286,7 +201,7 @@
             },
             {
                 "task_label": "Define observation type",
-                "task_description": "The task of defining the preferred observation type (e.g., station-based, gridded).",
+                "task_description": "The operation that defines the preferred observation type (e.g., station-based, gridded).",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/DefineObservationType",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -300,7 +215,7 @@
             },
             {
                 "task_label": "Provide additional climate simulation selection criteria",
-                "task_description": "The task of providing additional constraints to the climate simulation selection like origin of source (e.g., institution, country of origin), etc. Provide information with URIs taken from the KG where possible.",
+                "task_description": "The operation that provides additional constraints to the climate simulation selection like origin of source (e.g., institution, country of origin), etc. Provide information with URIs taken from the KG where possible.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ProvideAdditionalClimateSimulationSelectionCriteria",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -310,7 +225,7 @@
             },
             {
                 "task_label": "Provide additional observation selection criteria",
-                "task_description": "The task of providing additional constraints to the observation selection, such as the origin of the source (e.g., institution, country of origin), etc. Provide information with URIs taken from the KG where possible.",
+                "task_description": "The operation that provides additional constraints to the observation selection, such as the origin of the source (e.g., institution, country of origin), etc. Provide information with URIs taken from the KG where possible.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ProvideAdditionalObservationSelectionCriteria",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -320,7 +235,7 @@
             },
             {
                 "task_label": "Filter climate simulations by selection criteria",
-                "task_description": "The task of applying filtering criteria to the list of climate simulations and shortlisting matching entries.",
+                "task_description": "The operation that applies filtering criteria to the list of climate simulations and shortlisting matching entries. The case solver may add reasoning for choosing particular filtering criteria.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/FilterClimateSimulationsBySelectionCriteria",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -330,7 +245,7 @@
             },
             {
                 "task_label": "Filter observations by selection criteria",
-                "task_description": "The task of applying filtering criteria to the list of observations and shortlisting matching entries.",
+                "task_description": "The operation that applies filtering criteria to the list of observations and shortlisting matching entries. The case solver may add reasoning for choosing particular filtering criteria.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/FilterObservationsBySelectionCriteria",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -340,7 +255,7 @@
             },
             {
                 "task_label": "Conduct manual selection of climate simulations",
-                "task_description": "The task of manually selecting the climate simulations",
+                "task_description": "The operation that selects the climate simulations. If all ensemble members are selected, choose the parent simulation (those without an ensemble identifier in the name).",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateSimulations",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -355,7 +270,7 @@
             },
             {
                 "task_label": "Conduct manual selection of climate projections",
-                "task_description": "The task of manually selecting the climate projections",
+                "task_description": "The operation that selects the climate projections",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -370,7 +285,7 @@
             },
             {
                 "task_label": "Conduct manual selection of observations",
-                "task_description": "The task of manually selecting the observations",
+                "task_description": "The operation that selects the observations",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfObservations",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -385,7 +300,7 @@
             },
             {
                 "task_label": "Filter climate simulations by global warming level exceedance",
-                "task_description": "The task of selecting simulations exceeding the specific global warming level.",
+                "task_description": "The operation that selects simulations exceeding the specific global warming level. This operation relates to providing information about climate simulations that reach the relevant global warming level within the period of interest (usually by 2100), based on previous studies or work.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/FilterClimateSimulationsByGlobalWarmingLevelExceedance",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -395,7 +310,7 @@
             },
             {
                 "task_label": "Extract global warming level time slice",
-                "task_description": "The task of extracting the time slice centered around the point in time when the specific global warming level is exceeded.",
+                "task_description": "The operation that extracts the time slice centered around the point in time when the specific global warming level is exceeded. This operation requires defining the duration of the time slice. The case solver may also provide information—based on dataset guidance or previous studies—regarding the relevant start and end dates of the time slices.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ExtractGlobalWarmingLevelTimeSlice",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -408,7 +323,7 @@
             },
             {
                 "task_label": "Apply pattern scaling",
-                "task_description": "The task of conducting pattern scaling of regional climate response to the global warming level.",
+                "task_description": "The operation that conducts pattern scaling of climate response to the global warming level.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ApplyPatternScaling",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -418,7 +333,7 @@
             },
             {
                 "task_label": "Apply additional spatial and/or temporal downscaling",
-                "task_description": "The task of applying statistical or dynamical downscaling techniques to increase the spatial and/or temporal resolution of global or regional climate model outputs. This task is normally unnecessary if the selected data is already downscaled.",
+                "task_description": "The operation that applies statistical or dynamical downscaling techniques to increase the spatial and/or temporal resolution of global or regional climate model outputs. This task is normally unnecessary if the selected data is already downscaled.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ApplyAdditionalSpatialAndOrTemporalDownscaling",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -433,7 +348,7 @@
             },
             {
                 "task_label": "Apply data preprocessing",
-                "task_description": "The task of performing data preprocessing (e.g., regridding, gap-filling, aggregation, filtering, bias correction) on raw climate model output and observations to ensure it is accurate, consistent, and suitable for analysis.",
+                "task_description": "The operation that performs data preprocessing (e.g., regridding, gap-filling, aggregation, filtering, bias correction) on raw climate model output and observations to ensure it is accurate, consistent, and suitable for analysis.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ApplyDataPreprocessing",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -448,7 +363,7 @@
             },
             {
                 "task_label": "Compute climate indices",
-                "task_description": "The task of computing relevant climate indices from both observational and climate model datasets. Possibly, emulators could be used to obtain relevant information for index computation.",
+                "task_description": "The operation that computes relevant climate indices from both observational and climate model datasets. Possibly, emulators could be used to obtain relevant information for index computation.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ComputeClimateIndices",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -493,7 +408,7 @@
             },
             {
                 "task_label": "Conduct observation analysis",
-                "task_description": "The task of analyzing observational datasets to establish historical trends and variability.",
+                "task_description": "The operation that analyzes observational datasets to establish historical trends and variability.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductObservationAnalysis",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -508,7 +423,7 @@
             },
             {
                 "task_label": "Conduct spatial aggregation",
-                "task_description": "The task of spatially aggregating calculated indices.",
+                "task_description": "The operation that aggregates calculated indices.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductSpatialAggregation",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -523,7 +438,7 @@
             },
             {
                 "task_label": "Evaluate climate simulations",
-                "task_description": "The task of evaluating the performance of climate simulations against observations, by comparing how well climate models reproduce historical climate conditions for selected indices or variables. This evaluation helps determine which models could be more reliable for projecting future climate changes.",
+                "task_description": "The operation that evaluates the performance of climate simulations against observations, by comparing how well climate models reproduce historical climate conditions for selected indices or variables. This evaluation helps determine which models could be more reliable for projecting future climate changes.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/EvaluateClimateSimulations",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
@@ -537,19 +452,14 @@
                 }
             },
             {
-                "task_label": "Select climate simulations",
-                "task_description": "The task of rejecting the climate model simulations that do not meet the evaluation criteria or the ad hoc selection by the case solver.",
-                "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SelectClimateSimulations",
+                "task_label": "Choose the criteria for selecting or rejecting climate simulations",
+                "task_description": "The operation that rejects the climate model simulations that do not meet the evaluation criteria or the ad hoc selection by the case solver.",
+                "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ChooseTheCriteriaForSelectingOrRejectingClimateSimulations",
                 "children": [],
                 "parent_task_label": "Prepare climate information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
-                "data": "single_entity",
-                "metadata": {
-                    "gui_label": "Select climate simulations",
-                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/SelectClimateSimulations/associated-data",
-                    "multiple_selection": false
-                }
+                "data": "",
+                "metadata": {}
             }
         ],
         "parent_task_label": null,
@@ -559,12 +469,12 @@
     },
     {
         "task_label": "Analyse climate information",
-        "task_description": "The task of analysing the climate information to understand what future climatic changes are simulated and associated uncertainties.",
+        "task_description": "The operation that analyses the climate information to understand what future climatic changes are simulated and associated uncertainties.",
         "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/AnalyseClimateInformation",
         "children": [
             {
                 "task_label": "Quantify future climate change",
-                "task_description": "The task of analysing and projecting the future climate by creating an output metric based on the selected climate simulations.",
+                "task_description": "The operation that analyses and projecting the future climate by creating an output metric based on the selected climate simulations.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/QuantifyFutureClimateChange",
                 "children": [],
                 "parent_task_label": "Analyse climate information",
@@ -579,7 +489,7 @@
             },
             {
                 "task_label": "Quantify uncertainty",
-                "task_description": "The task of quantifying the uncertainty in projections of the selected climate simulations.",
+                "task_description": "The operation that quantifies the uncertainty in projections of the selected climate simulations.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/QuantifyUncertainty",
                 "children": [],
                 "parent_task_label": "Analyse climate information",
@@ -594,7 +504,7 @@
             },
             {
                 "task_label": "Estimate subjective confidence",
-                "task_description": "The task of indicating the subjective level of confidence in future climate change and uncertainty quantification.",
+                "task_description": "The operation that indicates the subjective level of confidence in future climate change and uncertainty quantification.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/EstimateSubjectiveConfidence",
                 "children": [],
                 "parent_task_label": "Analyse climate information",
@@ -609,7 +519,7 @@
             },
             {
                 "task_label": "Postprocess climate information",
-                "task_description": "The task of postprocessing (e.g., spatially aggregating) provided climate information",
+                "task_description": "The operation that postprocesses (e.g., spatially aggregating) provided climate information",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PostprocessClimateInformation",
                 "children": [],
                 "parent_task_label": "Analyse climate information",
@@ -629,23 +539,13 @@
         "metadata": {}
     },
     {
-        "task_label": "Present climate information",
-        "task_description": "The task of presenting the climate or climate impact information through visual (e.g., plot, diagram, flowchart, graph, map), quantitative (e.g., table), or qualitative (e.g. narrative) formats",
-        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PresentClimateInformation",
-        "children": [],
-        "parent_task_label": null,
-        "parent_task_uri": "",
-        "data": "",
-        "metadata": {}
-    },
-    {
         "task_label": "Assess climate impacts",
-        "task_description": "",
+        "task_description": "The operation that conducts the climate impact assessment to understand the impacts of each hazard",
         "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/AssessClimateImpacts",
         "children": [
             {
                 "task_label": "Select impact model",
-                "task_description": "The task of identifying models, transfer functions or datasets that can translate climate information into an impact assesment",
+                "task_description": "The operation that identifies models, transfer functions or datasets that can translate climate information into an impact assesment",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SelectImpactModel",
                 "children": [],
                 "parent_task_label": "Assess climate impacts",
@@ -655,7 +555,7 @@
             },
             {
                 "task_label": "Conduct impact analysis",
-                "task_description": "The task of applying impact models, transfer functions or datasets to simulate, quantify, or describe the impacts",
+                "task_description": "The operation that applies impact models, transfer functions or datasets to simulate, quantify, or describe the impacts",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductImpactAnalysis",
                 "children": [],
                 "parent_task_label": "Assess climate impacts",
@@ -665,7 +565,7 @@
             },
             {
                 "task_label": "Postprocess impact analysis",
-                "task_description": "The task of postprocessing the provided climate impact information (e.g., spatial aggregation, regridding) as necessary",
+                "task_description": "The operation that postprocesses the provided climate impact information (e.g., spatial aggregation, regridding) as necessary",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PostprocessImpactAnalysis",
                 "children": [],
                 "parent_task_label": "Assess climate impacts",
@@ -686,12 +586,12 @@
     },
     {
         "task_label": "Conduct climate risk assessment",
-        "task_description": "",
+        "task_description": "The operation that conducts climate risk assessment.",
         "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductClimateRiskAssessment",
         "children": [
             {
                 "task_label": "Identify vulnerability",
-                "task_description": "The task of providing vulnerability information.",
+                "task_description": "The operation that provides vulnerability information.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/IdentifyVulnerability",
                 "children": [],
                 "parent_task_label": "Conduct climate risk assessment",
@@ -701,7 +601,7 @@
             },
             {
                 "task_label": "Identify exposure",
-                "task_description": "The task of providing exposure information.",
+                "task_description": "The operation that provides exposure information.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/IdentifyExposure",
                 "children": [],
                 "parent_task_label": "Conduct climate risk assessment",
@@ -711,7 +611,7 @@
             },
             {
                 "task_label": "Assess risk",
-                "task_description": "The task of conducting the climate risk assessment.",
+                "task_description": "The operation that conducts the climate risk assessment.",
                 "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/AssessRisk",
                 "children": [],
                 "parent_task_label": "Conduct climate risk assessment",
@@ -720,6 +620,16 @@
                 "metadata": {}
             }
         ],
+        "parent_task_label": null,
+        "parent_task_uri": "",
+        "data": "",
+        "metadata": {}
+    },
+    {
+        "task_label": "Select the preferred way to communicate climate information",
+        "task_description": "The operation that selects how to communicate the climate or climate‑impact information to the customer through visual (e.g., plot, diagram, flowchart, graph, map), quantitative (e.g., table), or qualitative (e.g., narrative) formats.",
+        "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/SelectThePreferredWayToCommunicateClimateInformation",
+        "children": [],
         "parent_task_label": null,
         "parent_task_uri": "",
         "data": "",
