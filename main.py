@@ -162,50 +162,85 @@ def list_resources_for_role(
     contains: str | None = None,
     output_var_name: str = "classInstance"
 ):
-
-    #role_uri = "https://w3id.org/hacid/data/cs/wf/ops/FilterClimateProjectionsByVariable/roles/SelectedVariable" # for testing purposes
-
     startswith_filter = ""
     contains_filter = ""
 
-    if(startswith!=None):
-        startswith_filter = f"FILTER(STRSTARTS(LCASE(?{output_var_name}Label), LCASE('{startswith}')))." if startswith else ""
+    if(role_uri!='method'):
+        if(startswith!=None):
+            startswith_filter = f"FILTER(STRSTARTS(LCASE(?{output_var_name}Label), LCASE('{startswith}')))." if startswith else ""
 
-    if(contains!=None):
-        contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?{output_var_name}Label)), LCASE('{c}'))." for c in (contains.split(',') or [])])
+        if(contains!=None):
+            contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?{output_var_name}Label)), LCASE('{c}'))." for c in (contains.split(',') or [])])
 
-    query = f"""
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX owl: <http://www.w3.org/2002/07/owl#>
-        PREFIX top: <https://w3id.org/hacid/onto/top-level/> 
+        query = f"""
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX owl: <http://www.w3.org/2002/07/owl#>
+            PREFIX top: <https://w3id.org/hacid/onto/top-level/> 
 
-        SELECT DISTINCT
-            ?{output_var_name} ?{output_var_name}Label
-        WHERE {{
-            <{role_uri}>
-                top:hasExpectedType/(
-                    (owl:unionOf|owl:intersectionOf)/rdf:rest*/rdf:first |
-                    owl:allValuesFrom
-                )* ?itemClass.
-            FILTER(?itemClass NOT IN (top:Interval)).
-            {{
-                ?{output_var_name} a ?itemClass.
-            }} UNION {{
-                ?itemClass
-                    a owl:Restriction;
-                    owl:onProperty ?p;
-                    owl:hasValue ?o
-                .
-                ?{output_var_name} ?p ?o.
-            }}.
-            ?{output_var_name} rdfs:label ?{output_var_name}Label
-            {startswith_filter}
-            {contains_filter}
-        }}
-        ORDER BY ?{output_var_name}Label
-        LIMIT 1000
-    """
+            SELECT DISTINCT
+                ?{output_var_name} ?{output_var_name}Label
+            WHERE {{
+                <{role_uri}>
+                    top:hasExpectedType/(
+                        (owl:unionOf|owl:intersectionOf)/rdf:rest*/rdf:first |
+                        owl:allValuesFrom
+                    )* ?itemClass.
+                FILTER(?itemClass NOT IN (top:Interval)).
+                {{
+                    ?{output_var_name} a ?itemClass.
+                }} UNION {{
+                    ?itemClass
+                        a owl:Restriction;
+                        owl:onProperty ?p;
+                        owl:hasValue ?o
+                    .
+                    ?{output_var_name} ?p ?o.
+                }}.
+                ?{output_var_name} rdfs:label ?{output_var_name}Label
+                {startswith_filter}
+                {contains_filter}
+            }}
+            ORDER BY ?{output_var_name}Label
+            LIMIT 1000
+        """
+    else:
+        if(startswith!=None):
+            startswith_filter = f"FILTER(STRSTARTS(LCASE(?{output_var_name}Label), LCASE('{startswith}')))." if startswith else ""
+
+        if(contains!=None):
+            contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?{output_var_name}Label)), LCASE('{c}'))." for c in (contains.split(',') or [])])
+
+        query = f"""
+            BASE <https://w3id.org/hacid/data/cs/wf/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX top: <https://w3id.org/hacid/onto/top-level/>
+            PREFIX methods: <https://w3id.org/hacid/data/cs/wf/methods/>
+
+            SELECT 
+                ?{output_var_name} ?{output_var_name}Label
+            WHERE {{
+  	            {{  
+                    SELECT ?{output_var_name}
+                        (CONCAT(?general_method_label, ' - ', ?specific_method_label) AS ?base_method_label)
+                        (GROUP_CONCAT(DISTINCT ?specific_method_altLabel; separator=", ") AS ?alt_method_labels)
+                    WHERE {{
+                        ?general_method top:specializes methods:ClimateCaseMethod;
+                            rdfs:label ?general_method_label.
+                        ?{output_var_name} top:specializes ?general_method;
+                            rdfs:label ?specific_method_label.
+                        OPTIONAL {{
+                            ?{output_var_name} top:altLabel ?specific_method_altLabel
+                        }}
+                    }}
+                    GROUP BY ?{output_var_name} ?general_method_label ?specific_method_label
+  	            }}
+  	            BIND(CONCAT(?base_method_label,IF(?alt_method_labels, CONCAT(' (',?alt_method_labels,')'),'')) AS ?{output_var_name}Label).
+                {contains_filter}
+            }}
+            ORDER BY ?{output_var_name}Label
+        """
+
     #logger.info(f"Query: {query}")
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
@@ -237,12 +272,48 @@ def get_tasks():
 # param contains: Optional filter to return only hazards whose labels contain these comma-separated substrings
 @app.get("/knowledge-graph/hazards")
 def find_hazards(startswith: str|None = None, contains: str | None = None):
-    return list_resources_for_role(
-        role_uri="https://w3id.org/hacid/data/cs/wf/ops/IdentifyHazards/associated-data",
-        startswith=startswith,
-        contains=contains,
-        output_var_name="hazard"
-    )
+    contains_filter = ""
+    if(contains!=None):
+        contains_filter = "\n".join([f"FILTER CONTAINS(LCASE(str(?{output_var_name}Label)), LCASE('{c}'))." for c in (contains.split(',') or [])])
+
+    query = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+        PREFIX top: <https://w3id.org/hacid/onto/top-level/> 
+
+        SELECT DISTINCT
+            ?hazard ?hazardLabel
+        WHERE {{
+            <https://w3id.org/hacid/data/cs/wf/ops/IdentifyHazards/associated-data>
+                top:hasExpectedType/(
+                    (owl:unionOf|owl:intersectionOf)/rdf:rest*/rdf:first |
+                    owl:allValuesFrom
+                )* ?itemClass.
+            FILTER(?itemClass NOT IN (top:Interval)).
+            {{
+                ?hazard a ?itemClass.
+            }} UNION {{
+                ?itemClass
+                    a owl:Restriction;
+                    owl:onProperty ?p;
+                    owl:hasValue ?o
+                .
+                ?hazard ?p ?o.
+            }}.
+            ?hazard rdfs:label ?hazardLabel
+            FILTER(LCASE(str(?hazardLabel)) != "climate hazard type")
+            {contains_filter}
+        }}
+        ORDER BY ?hazardLabel
+        LIMIT 1000
+    """
+
+    sparql.setQuery(query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+
+    return results['results']['bindings']
 
 @app.get("/knowledge-graph/sparql")
 def find_class_instances(query: str):

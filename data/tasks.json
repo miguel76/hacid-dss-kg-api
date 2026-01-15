@@ -57,7 +57,7 @@
                     "gui_label": "Select variable or index",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
                     "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/IdentifyIndicesAndVariables/associated-data",
-                    "multiple_selection": false
+                    "multiple_selection": true
                 }
             },
             {
@@ -115,7 +115,7 @@
                 "metadata": {
                     "gui_label": "Select extraction method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ChooseGlobalWarmingLevelExtractionMethod/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -158,10 +158,10 @@
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
                 "data": "number_range",
                 "metadata": {
-                    "gui_label": "Select spatial resolution",
-                    "gui_start_label": "Minimum spatial resolution",
-                    "gui_end_label": "Maximum spatial resolution",
-                    "gui_single_label": "Spatial resolution",
+                    "gui_label": "Select spatial resolution ",
+                    "gui_start_label": "Minimum spatial resolution (km)",
+                    "gui_end_label": "Maximum spatial resolution (km)",
+                    "gui_single_label": "Spatial resolution (km)",
                     "optional_single": true
                 }
             },
@@ -265,6 +265,21 @@
                     "gui_label": "Select climate simulations",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
                     "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateSimulations/associated-data",
+                    "multiple_selection": true
+                }
+            },
+            {
+                "task_label": "Conduct manual selection of climate projections",
+                "task_description": "The task of manually selecting the climate projections",
+                "task_uri": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections",
+                "children": [],
+                "parent_task_label": "Prepare climate information",
+                "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
+                "data": "single_entity",
+                "metadata": {
+                    "gui_label": "Select climate projections",
+                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
+                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections/associated-data",
                     "multiple_selection": false
                 }
             },
@@ -290,13 +305,8 @@
                 "children": [],
                 "parent_task_label": "Prepare climate information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
-                "data": "single_entity",
-                "metadata": {
-                    "gui_label": "Select observations",
-                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfObservations/associated-data",
-                    "multiple_selection": false
-                }
+                "data": "",
+                "metadata": {}
             },
             {
                 "task_label": "Filter climate simulations by global warming level exceedance",
@@ -317,8 +327,11 @@
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
                 "data": "duration_range",
                 "metadata": {
+                    "gui_label": "Select duration",
+                    "gui_single_label": "Time slice duration",
                     "gui_start_label": "Select minimum duration",
-                    "gui_end_label": "Select maximum duration"
+                    "gui_end_label": "Select maximum duration",
+                    "optional_single": false
                 }
             },
             {
@@ -342,7 +355,7 @@
                 "metadata": {
                     "gui_label": "Select downscaling method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ApplyAdditionalSpatialAndOrTemporalDownscaling/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -357,7 +370,7 @@
                 "metadata": {
                     "gui_label": "Select preprocessing method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ApplyDataPreprocessing/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -372,7 +385,7 @@
                 "metadata": {
                     "gui_label": "Select computation method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ComputeClimateIndices/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -387,7 +400,7 @@
                 "metadata": {
                     "gui_label": "Select computation method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ComputeSliceStatistic/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -402,7 +415,7 @@
                 "metadata": {
                     "gui_label": "Select computation method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ComputeChange/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -415,9 +428,9 @@
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/PrepareClimateInformation",
                 "data": "single_entity",
                 "metadata": {
-                    "gui_label": "Select observation dataset",
+                    "gui_label": "Select method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductObservationAnalysis/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -432,7 +445,7 @@
                 "metadata": {
                     "gui_label": "Select spatial aggregation method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductSpatialAggregation/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -447,7 +460,7 @@
                 "metadata": {
                     "gui_label": "Select evaluation method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/EvaluateClimateSimulations/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -481,9 +494,9 @@
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/AnalyseClimateInformation",
                 "data": "single_entity",
                 "metadata": {
-                    "gui_label": "Select future climate change metric",
+                    "gui_label": "Select method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/QuantifyFutureClimateChange/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -498,7 +511,7 @@
                 "metadata": {
                     "gui_label": "Select uncertainty quantification method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/QuantifyUncertainty/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             },
@@ -509,13 +522,8 @@
                 "children": [],
                 "parent_task_label": "Analyse climate information",
                 "parent_task_uri": "https://w3id.org/hacid/data/cs/wf/ops/AnalyseClimateInformation",
-                "data": "single_entity",
-                "metadata": {
-                    "gui_label": "Select subjective confidence level",
-                    "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/EstimateSubjectiveConfidence/associated-data",
-                    "multiple_selection": false
-                }
+                "data": "",
+                "metadata": {}
             },
             {
                 "task_label": "Postprocess climate information",
@@ -528,7 +536,7 @@
                 "metadata": {
                     "gui_label": "Select postprocessing method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/PostprocessClimateInformation/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             }
@@ -574,7 +582,7 @@
                 "metadata": {
                     "gui_label": "Select postprocessing method",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
-                    "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/PostprocessImpactAnalysis/associated-data",
+                    "entity_type": "method",
                     "multiple_selection": false
                 }
             }
