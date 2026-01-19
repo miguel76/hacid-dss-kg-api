@@ -280,7 +280,7 @@
                     "gui_label": "Select climate projections",
                     "data_source": "https://hacid-backend.istc.cnr.it/api/knowledge-graph/task-data",
                     "entity_type": "https://w3id.org/hacid/data/cs/wf/ops/ConductManualSelectionOfClimateProjections/associated-data",
-                    "multiple_selection": false
+                    "multiple_selection": true
                 }
             },
             {
